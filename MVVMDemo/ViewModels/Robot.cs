@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+
 namespace MVVMDemo.Models
-{
+{   
+
     public class Robot : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

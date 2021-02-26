@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.ComponentModel;
 using MVVMDemo.Models;
 using MVVMDemo.Commands;
@@ -39,7 +39,7 @@ namespace MVVMDemo.ViewModels
             public ObservableCollection<Robot> RobotsList
         {
             get { return robotsList; }
-            set { robotsList = value; OnPropertyChanged("RobotsList"); }
+            set { robotsList = value; OnPropertyChanged("RobotsList");}
         }
 
        /* private ObservableCollection<Robot> robotsList;
@@ -68,7 +68,7 @@ namespace MVVMDemo.ViewModels
         public string Message
         {
             get { return message; }
-            set { message = value;OnPropertyChanged("Message"); }
+            set { message = value;OnPropertyChanged("Message");}
         }
 
         #region SaveOperation
@@ -84,6 +84,7 @@ namespace MVVMDemo.ViewModels
         {
             try
             {
+                Console.WriteLine("Save");
                 var IsSaved = ObjRobotService.Add(CurrentRobot);
                 LoadData();
                 if (IsSaved)
@@ -152,6 +153,7 @@ namespace MVVMDemo.ViewModels
             try
             {
                 var IsUpdated = ObjRobotService.Update(CurrentRobot);
+                //Thread.Sleep(2000);
                 if (IsUpdated)
                 {
                     Message = "Robot Updated";
@@ -171,6 +173,7 @@ namespace MVVMDemo.ViewModels
         }
         #endregion
 
+        #region DeleteOperation
         private RelayCommand deleteCommand;
 
         public RelayCommand DeleteCommand
@@ -183,7 +186,7 @@ namespace MVVMDemo.ViewModels
             try
             {
                 var IsDeleted = ObjRobotService.Delete(CurrentRobot.SerialNo);
-                if ((bool)IsDeleted)
+                if (IsDeleted)
                 {
                     Message = "Robot Is Deleted";
                     LoadData();
@@ -201,7 +204,7 @@ namespace MVVMDemo.ViewModels
                 Message = ex.Message;
             }
         }
-
+        #endregion
 
     }
 }

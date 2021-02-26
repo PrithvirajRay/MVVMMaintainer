@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MVVMDemo.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Height="500" Width="800"
               Margin="8,8">
     <Grid Margin="8,8">
         <Grid.ColumnDefinitions>
@@ -84,32 +84,12 @@
                  Grid.Row="6"
                  Grid.Column="1" 
                  Margin="8,10.5,8,19.5" 
-                 Text="{Binding Path=CurrentRobot.Parameter5,Mode=TwoWay}"/>
-
-        <StackPanel Orientation="Horizontal" 
-                    Grid.Row="6" Margin="10,114.5,554,-102.5" Grid.ColumnSpan="2">
-
-            <Button Name="btnAdd" 
-                    Content="ADD" 
-                    Margin="5,8" 
-                    Command="{Binding Path=SaveCommand}"/>
-            <Button Name="btnSearch" 
-                    Content="SEARCH" 
-                    Margin="5,8" Command="{Binding Path=SearchCommand}"/>
-            <Button Name="btnUpdate" 
-                    Content="UPDATE" 
-                    Margin="5,8" Command="{Binding Path=UpdateCommand}"/>
-            <Button Name="btnDelete" 
-                    Content="DELETE" 
-                    Margin="5,8" Command="{Binding Path=DeleteCommand}"/>
-        </StackPanel>
+                 Text="{Binding Path=CurrentRobot.Parameter5,Mode=TwoWay}"/>       
 
 
-        <TextBlock Name="txtBlockMessage" 
-                   Grid.Row="6" 
-                   Text="{Binding Path=Message}" Margin="10,34.5,97,-34" Grid.ColumnSpan="2"/>
+        
         <DataGrid Name="dgRobots" 
-                  AutoGenerateColumns="False" Grid.Row="6" Margin="10,178.5,107,-164" Padding="3" ItemsSource="{Binding Path=RobotsList,Mode=TwoWay}" Grid.ColumnSpan="2">
+                  AutoGenerateColumns="False" Grid.Row="6" Margin="8,150.5,109,-136" Padding="3" ItemsSource="{Binding Path=RobotsList,Mode=TwoWay}" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Robot SerialNo"
                                     Width="auto"
@@ -127,7 +107,7 @@
                                     Width="auto"
                                     Binding="{Binding
                                     Path=Parameter3}"/>
-                <DataGridTextColumn Header="Robot Parameter24"
+                <DataGridTextColumn Header="Robot Parameter4"
                                     Width="auto"
                                     Binding="{Binding
                                     Path=Parameter4}"/>
@@ -137,6 +117,26 @@
                                     Path=Parameter5}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="6" Margin="204,77.5,253,-66" Grid.Column="1">
+
+            <Button Name="btnAdd" 
+                    Content="ADD" 
+                    Margin="5,8" 
+                    Command="{Binding Path=SaveCommand}"/>
+            <Button Name="btnSearch" 
+                    Content="SEARCH" 
+                    Margin="5,8" Command="{Binding Path=SearchCommand}"/>
+            <Button Name="btnUpdate" 
+                    Content="UPDATE" 
+                    Margin="5,8" Command="{Binding Path=UpdateCommand}"/>
+            <Button Name="btnDelete" 
+                    Content="DELETE" 
+                    Margin="5,8" Command="{Binding Path=DeleteCommand}"/>
+        </StackPanel>
+        
+        
 
     </Grid>
 </UserControl>
